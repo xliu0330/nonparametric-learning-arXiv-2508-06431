@@ -21,7 +21,7 @@ def P_x_theta(x, theta, alpha, r2, p = 0.6810463):
     
     c0 = tau / (np.sqrt(tau**2 + alpha**2))
     c1 = alpha / (np.sqrt(tau**2 + alpha**2))
-    mu = r2 * np.cos(theta)
+    mu = beta * np.cos(theta)
     correct_term = (1 - p * c1**2 + 2 * p * c1**2 * x**2 / beta**2 + 2 * np.sqrt(2) * p * c0 * c1 * mu * x / beta**2)
 
     # correct_term = 1
@@ -136,7 +136,6 @@ def rho_kitten(y, yp, r2, alpha, p = 0.6810463):
 
 def rho_max(grouped_data_dict, mu_max, N_mu, kappa, n_precision, g_list, h_list, L_limit, N_theta, correction = False):
 
-
     mu_list = np.linspace(-mu_max, mu_max, N_mu)
     rho_heat_map = np.zeros((len(h_list), len(g_list)), dtype=complex)
     exp_term = np.exp(-1j * mu_list[:, np.newaxis] * (h_list / 2)[np.newaxis, :])
@@ -158,7 +157,6 @@ def rho_max(grouped_data_dict, mu_max, N_mu, kappa, n_precision, g_list, h_list,
             theta_bin = int(np.floor(np.mod(theta, np.pi) / (np.pi / N_theta)))
             xb = grouped_data_dict[theta_bin]
             X_samples = np.array(xb)
-            
 
             try:
 
@@ -179,8 +177,6 @@ def rho_max(grouped_data_dict, mu_max, N_mu, kappa, n_precision, g_list, h_list,
 
         rho_element = (1 / (2 * np.pi)) * np.trapz(phi_t1_over_mu_list[:, np.newaxis] * exp_term, mu_list, axis=0)
 
-        
         rho_heat_map[:, idx_g] = rho_element
-
-            
+ 
     return rho_heat_map
