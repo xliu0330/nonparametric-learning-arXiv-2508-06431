@@ -12,7 +12,7 @@ The proposed nonparametric learning method is benchmarked against several existi
 
 ## Compared Methods
 
-We compare our method with the following approaches. We thank the authors of the referenced works and the corresponding code repositories, which were helpful for implementing the comparisons.:
+We compare our method with the following approaches. We thank the authors of the referenced works and the corresponding code repositories, which were helpful for implementing the comparisons.
 
 ### 1. Bayesian Inference
 
